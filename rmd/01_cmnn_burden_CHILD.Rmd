@@ -29,10 +29,10 @@ data_cmn_pivot <- data_cmn_filtered %>% select(-Code) %>%
 
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
-cmnn_time <- data_cmn_pivot %>% 
-ggplot(mapping = aes(x = "Year", 
-                                     y = "DALY", 
-                                     color = "Entity")) +
+cmnn_time <- ggplot(data = data_cmn_pivot,
+       mapping = aes(x = Year, 
+                                     y = DALY, 
+                                     color = Entity)) +
   geom_line() +
   labs(title = "DALY Over Time by Country",
        x = "Year",
