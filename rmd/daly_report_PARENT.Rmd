@@ -1,6 +1,6 @@
 ---
 title: "Global Disease Burden Analysis"
-author: "REPLACE WITH THE AUTHOR NAMES" # AUTHOR NAMES HERE!
+author: "Jessica Zafra, Massiel Sepulveda" # AUTHOR NAMES HERE!
 output: github_document
 ---
 
