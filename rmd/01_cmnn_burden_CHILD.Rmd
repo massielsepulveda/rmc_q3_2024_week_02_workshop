@@ -1,11 +1,11 @@
 # Communicable, Maternal, Neonatal, and Nutritional Disease Burden (CMNN)
 
-```{r echo=FALSE}
+```{r echo=FALSE, results = 'hide'}
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
 # Import the communicable diseases data
-data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"))
+data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"), show_col_types = FALSE) #read in data, don't print column info
 ```
 
 ```{r echo=FALSE}
@@ -16,6 +16,7 @@ data_cmn_filtered <-  data_cmnn %>%
 ```
 
 ## Table of Estimates for CMNN Burden Over Time
+This table shows estimates for DALY burden over time for Dominican Republic, Mexico and Peru. These data focus specifically on DALYS for communicable, maternal, neonatal, and nutritional diseases (CMNN)across the three countries.
 
 ```{r echo=FALSE}
 # Here render a table for the DALY burden over time for the three countries.
@@ -24,12 +25,13 @@ data_cmn_filtered <-  data_cmnn %>%
 
 data_cmn_pivot <- data_cmn_filtered %>% select(-Entity) %>% 
   pivot_wider(names_from = Code, 
-              values_from = DALY) #pivot data so there's one row per year per country code
-  cmn_pivot_table <- kable(data_cmn_pivot) #renders table
+              values_from = DALY) #pivot data: one row per year per country code
+  cmn_pivot_table <- kable(data_cmn_pivot) #renders table via kable()
   cmn_pivot_table
 ```
 
 ## Plot Showing Trends in CMNN Burden Over Time
+The line graph below visualizes the trends in CMNN burden over time across the three countries.
 
 ```{r echo=FALSE}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
@@ -38,16 +40,15 @@ cmnn_time <-
      ggplot(data = data_cmn_filtered,
             mapping = aes(x = Year, 
                           y = DALY, 
-                          color = Code)) +
-     geom_line() +
-     labs(title = "DALYs Over Time by Country",
-         x = "Year",
+                          color = Code)) + #source plot data and map axes
+     geom_line() + #specify line graph
+     labs(title = "CMNN DALYs Over Time by Country", #add labels to plot
+          x = "Year",
           y = "DALYs",
-          color = "Country") +
+          color = "Country") + 
      theme_minimal()
 cmnn_time
 ```
 
 ## Summary of CMNN Burden Findings
-
-These data show the burden due to communicable, maternal, neonatal, and nutritional diseases (CMNN) for Dominican Republic (DOM), Mexico (MEX), and Peru (PER). We can see that overall, the DALYs over time for all three countries have been steadily dropping from 1990 to 2020. Peru, in particular, started with the highest DALYs in 1990 and, as of 2020, has dropped down to second place, behind the Dominican Republic.
+These data show the burden due to CMNN for Dominican Republic (DOM), Mexico (MEX), and Peru (PER). We can see that overall, the CMNN DALYs over time for all three countries have been steadily dropping from 1990 to 2020. Peru, in particular, started with the highest DALYs in 1990 and, as of 2020, has dropped down to second place, behind the Dominican Republic.

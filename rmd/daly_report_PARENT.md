@@ -17,6 +17,11 @@ The source data is from the Institute for Health Metrics and Evaluation
 
 ## Table of Estimates for CMNN Burden Over Time
 
+This table shows estimates for DALY burden over time for Dominican
+Republic, Mexico and Peru. These data focus specifically on DALYS for
+communicable, maternal, neonatal, and nutritional diseases (CMNN)across
+the three countries.
+
 | Year |       DOM |      MEX |       PER |
 |-----:|----------:|---------:|----------:|
 | 1990 | 13324.751 | 9556.953 | 16031.566 |
@@ -52,16 +57,19 @@ The source data is from the Institute for Health Metrics and Evaluation
 
 ## Plot Showing Trends in CMNN Burden Over Time
 
-![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+The line graph below visualizes the trends in CMNN burden over time
+across the three countries.
+
+![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ## Summary of CMNN Burden Findings
 
-These data show the burden due to communicable, maternal, neonatal, and
-nutritional diseases (CMNN) for Dominican Republic (DOM), Mexico (MEX),
-and Peru (PER). We can see that overall, the DALYs over time for all
-three countries have been steadily dropping from 1990 to 2020. Peru, in
-particular, started with the highest DALYs in 1990 and, as of 2020, has
-dropped down to second place, behind the Dominican Republic.
+These data show the burden due to CMNN for Dominican Republic (DOM),
+Mexico (MEX), and Peru (PER). We can see that overall, the CMNN DALYs
+over time for all three countries have been steadily dropping from 1990
+to 2020. Peru, in particular, started with the highest DALYs in 1990
+and, as of 2020, has dropped down to second place, behind the Dominican
+Republic.
 
 # Non-Communicable Disease Burden (NCD)
 
@@ -102,7 +110,7 @@ dropped down to second place, behind the Dominican Republic.
 
 ## Plot Showing Trends in NCD Burden Over Time
 
-![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ## Summary of NCD Burden Findings
 
@@ -119,10 +127,54 @@ slower in recent years.
 
 ## Table of Estimates for Overall Disease Burden Over Time
 
+This table shows the overall DALY burden over time for Dominican
+Republic, Mexico and Peru.
+
+| Year |      DOM |      MEX |      PER |
+|-----:|---------:|---------:|---------:|
+| 1990 | 37620.30 | 37352.90 | 42906.30 |
+| 1991 | 36871.87 | 36358.29 | 43555.44 |
+| 1992 | 36014.16 | 35598.10 | 41330.40 |
+| 1993 | 35727.42 | 34959.64 | 39946.89 |
+| 1994 | 35119.92 | 34250.38 | 38505.93 |
+| 1995 | 34849.20 | 33736.92 | 37655.02 |
+| 1996 | 34885.46 | 33100.04 | 35929.49 |
+| 1997 | 34818.55 | 32648.71 | 34982.92 |
+| 1998 | 34890.63 | 32213.37 | 34042.99 |
+| 1999 | 34347.10 | 31447.75 | 32386.16 |
+| 2000 | 33899.96 | 30657.01 | 31817.23 |
+| 2001 | 33577.65 | 30098.60 | 30437.03 |
+| 2002 | 33205.40 | 29932.84 | 29635.85 |
+| 2003 | 33528.58 | 29756.46 | 29250.71 |
+| 2004 | 34663.43 | 29206.45 | 28281.16 |
+| 2005 | 34385.40 | 29191.59 | 27641.26 |
+| 2006 | 34111.09 | 28754.94 | 26855.77 |
+| 2007 | 33710.05 | 28478.14 | 26006.04 |
+| 2008 | 32761.31 | 28876.06 | 25651.42 |
+| 2009 | 32414.73 | 29090.65 | 26627.45 |
+| 2010 | 32155.50 | 28655.61 | 26499.68 |
+| 2011 | 32346.64 | 28296.80 | 25879.47 |
+| 2012 | 33183.31 | 28073.73 | 25363.81 |
+| 2013 | 33972.20 | 28269.27 | 24849.35 |
+| 2014 | 33959.61 | 28087.14 | 24260.57 |
+| 2015 | 34117.43 | 27903.89 | 23681.82 |
+| 2016 | 33933.92 | 28013.45 | 23461.32 |
+| 2017 | 33286.32 | 28524.92 | 23102.48 |
+| 2018 | 32663.81 | 28332.93 | 22832.38 |
+| 2019 | 32135.66 | 28055.23 | 22589.26 |
+
 ## Plot Showing Trends in Overall Disease Burden Over Time
+
+The line graph below visualizes the trends in overall DALY burden over
+time across the three countries.
+
+![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 ## Summary of Overall Disease Burden Findings
 
-Provide a brief analysis based on the data presented in the table and
-chart. Highlight any significant findings or patterns. About 3
-sentences.
+These data show the overall DALYs for Dominican Republic (DOM), Mexico
+(MEX), and Peru (PER). Peru appears to have the steepest drop between
+1990 and 2020, dropping from highest DALYs to lowest overall among the
+three countries. Both Mexico and Dominican Republic show decreases over
+the same period, but Dominican Republic shows waves of increases and
+drops in DALYs between the late 1990s through 2020.

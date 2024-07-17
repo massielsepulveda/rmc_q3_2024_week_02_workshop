@@ -1,33 +1,55 @@
 # Overall Disease Burden
 
-```{r}
+```{r echo = FALSE}
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
 # Import the overall disease data
-data_overall <- read_csv(here("data/burden-of-disease-all-causes.csv"))
+data_overall <- read_csv(here("data/burden-of-disease-all-causes.csv"), show_col_types = FALSE) #read in data, don't print column info
 ```
 
-```{r}
+```{r echo = FALSE}
 # Filter the dataset to include only the three countries chosen by your group.
+overall_burden <- data_overall %>% 
+  rename(DALY = `DALYs (Disability-Adjusted Life Years) - All causes - Sex: Both - Age: Age-standardized (Rate)`) %>% #renamed DALYs for easier manipulation
+  filter(Code %in% c("DOM", "PER", "MEX")) #selects data only for Dominican Republic, Peru & Mexico
+
 ```
 
 
 ## Table of Estimates for Overall Disease Burden Over Time
+This table shows the overall DALY burden over time for Dominican Republic, Mexico and Peru.
 
-```{r}
+```{r echo = FALSE}
 # Here render a table for the DALY burden over time for the three countries. 
 # You should pivot the data to show each country in a separate column.
 # Use kable() from the knitr package to render the table.
+overall_pivot <- overall_burden %>% 
+  select(-Entity) %>% 
+  pivot_wider(names_from = Code, 
+              values_from = DALY) #pivot data: one row per year per country code
+overall_pivot <- kable(overall_pivot) #renders table via kable()
+overall_pivot
 ```
 
 ## Plot Showing Trends in Overall Disease Burden Over Time
+The line graph below visualizes the trends in overall DALY burden over time across the three countries.
 
-```{r}
+```{r echo = FALSE}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
+overall_burden_plot <-   ggplot(data = overall_burden,
+                                mapping = aes(x=Year, y=DALY, color = Code))  +
+  geom_line()+
+  labs(title = "All-Cause DALYs Over Time by Country",
+         x = "Year",
+          y = "DALYs",
+          color = "Country") +
+     theme_minimal()
+overall_burden_plot
+
 ```
 
 ## Summary of Overall Disease Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+These data show the overall DALYs for Dominican Republic (DOM), Mexico (MEX), and Peru (PER). Peru appears to have the steepest drop between 1990 and 2020, dropping from highest DALYs to lowest overall among the three countries. Both Mexico and Dominican Republic show decreases over the same period, but Dominican Republic shows waves of increases and drops in DALYs between the late 1990s through 2020.
 
