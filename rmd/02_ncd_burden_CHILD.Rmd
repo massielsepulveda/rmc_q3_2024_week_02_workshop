@@ -1,34 +1,64 @@
 # Non-Communicable Disease Burden (NCD)
 
-```{r}
+```{r echo=FALSE, error=FALSE, message=FALSE}
 # Load necessary packages
-pacman::p_load(tidyverse, knitr, here)
+pacman::p_load(tidyverse, knitr, here, janitor)
 
 # Import the non-communicable diseases data
 data_ncd <- read_csv(here("data/burden-of-disease-ncd.csv"))
 ```
 
-```{r}
-# Filter the dataset to include only the three countries chosen by your group.
+```{r echo=FALSE}
+
+data_ncd_clean <- data_ncd %>% 
+  rename(dalys = `DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% 
+  clean_names() %>% 
+  filter(code == "DOM" | code == "PER" | code == "MEX")
+
 ```
 
 
 ## Table of Estimates for NCD Burden Over Time
 
-```{r}
+```{r echo=FALSE}
 # Here render a table for the DALY burden over time for the three countries. 
 # You should pivot the data to show each country in a separate column.
 # Use kable() from the knitr package to render the table.
+
+data_ncd_wide <- data_ncd_clean %>%
+  select(-entity) %>% 
+  pivot_wider(names_from = code,
+              values_from = dalys)
+
+ncd_table <- kable(data_ncd_wide)
+ncd_table
+
 ```
 
 ## Plot Showing Trends in NCD Burden Over Time 
 
-```{r}
+```{r, echo=FALSE}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
+
+plot_ncd <- ggplot(data = data_ncd_clean,
+                   mapping = aes(x = year,
+                                 y = dalys,
+                                 color = entity)) +
+  geom_line() +
+  labs(title = "Burden of NCDs over time",
+       color = "Country",
+       x = "Year",
+       y = "DAlYs")
+
+plot_ncd
 ```
 
 ## Summary of NCD Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+3 chosen from the Latin America and Caribean Region were chosen: Dominican Republic, Mexico and Peru.
+
+The trend of NCD burden in Peru seems to be declining, while the one for Dominican Republic increases over time. 
+
+In the case of Mexico, there has been a slow decline that has become slower in recent years.
 
 
