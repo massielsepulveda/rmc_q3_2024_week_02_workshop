@@ -1,6 +1,6 @@
 # Communicable, Maternal, Neonatal, and Nutritional Disease Burden (CMNN)
 
-```{r}
+```{r echo=FALSE}
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
@@ -8,40 +8,46 @@ pacman::p_load(tidyverse, knitr, here)
 data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"))
 ```
 
-```{r}
+```{r echo=FALSE}
 # Filter the dataset to include only the three countries chosen by your group.
-data_cmn_filtered <-  data_cmnn %>% filter(Code %in% c("DOM", "PER", "MEX")) %>%   rename(DALY = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`)
+data_cmn_filtered <-  data_cmnn %>% 
+  rename(DALY = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% #renamed DALYs for easier manipulation
+  filter(Code %in% c("DOM", "PER", "MEX"))  #selects data only for Dominican Republic, Peru & Mexico
 ```
 
 ## Table of Estimates for CMNN Burden Over Time
 
-```{r}
+```{r echo=FALSE}
 # Here render a table for the DALY burden over time for the three countries.
 # You should pivot the data to show each country in a separate column.
 # Use kable() from the knitr package to render the table.
 
-data_cmn_pivot <- data_cmn_filtered %>% select(-Code) %>% 
-  pivot_wider(names_from = Entity, values_from = DALY)
-  cmn_pivot_table <- kable(data_cmn_pivot)
+data_cmn_pivot <- data_cmn_filtered %>% select(-Entity) %>% 
+  pivot_wider(names_from = Code, 
+              values_from = DALY) #pivot data so there's one row per year per country code
+  cmn_pivot_table <- kable(data_cmn_pivot) #renders table
+  cmn_pivot_table
 ```
 
 ## Plot Showing Trends in CMNN Burden Over Time
 
-```{r}
+```{r echo=FALSE}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
-cmnn_time <- ggplot(data = data_cmn_pivot,
-       mapping = aes(x = Year, 
-                                     y = DALY, 
-                                     color = Entity)) +
-  geom_line() +
-  labs(title = "DALY Over Time by Country",
-       x = "Year",
-       y = "DALY",
-       color = "Country") +
-  theme_minimal()
 
+cmnn_time <- 
+     ggplot(data = data_cmn_filtered,
+            mapping = aes(x = Year, 
+                          y = DALY, 
+                          color = Code)) +
+     geom_line() +
+     labs(title = "DALYs Over Time by Country",
+         x = "Year",
+          y = "DALYs",
+          color = "Country") +
+     theme_minimal()
+cmnn_time
 ```
 
 ## Summary of CMNN Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+These data show the burden due to communicable, maternal, neonatal, and nutritional diseases (CMNN) for Dominican Republic (DOM), Mexico (MEX), and Peru (PER). We can see that overall, the DALYs over time for all three countries have been steadily dropping from 1990 to 2020. Peru, in particular, started with the highest DALYs in 1990 and, as of 2020, has dropped down to second place, behind the Dominican Republic.
