@@ -10,7 +10,7 @@ data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"))
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_cmn_filtered <-  data_cmnn %>% filter(Code %in% c("DOM", "PER", "USA"))
+data_cmn_filtered <-  data_cmnn %>% filter(Code %in% c("DOM", "PER", "MEX")) %>%   rename(DALY = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`)
 ```
 
 ## Table of Estimates for CMNN Burden Over Time
@@ -21,19 +21,25 @@ data_cmn_filtered <-  data_cmnn %>% filter(Code %in% c("DOM", "PER", "USA"))
 # Use kable() from the knitr package to render the table.
 
 data_cmn_pivot <- data_cmn_filtered %>% select(-Code) %>% 
-  rename(DALY = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% 
-  group_by(Year) %>% 
-  pivot_wider(names_from = Entity, values_from = DALY) %>% 
-  ungroup()
-cmn_pivot_table <- kable(data_cmn_pivot)
-
-
+  pivot_wider(names_from = Entity, values_from = DALY)
+  cmn_pivot_table <- kable(data_cmn_pivot)
 ```
 
 ## Plot Showing Trends in CMNN Burden Over Time
 
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
+cmnn_time <- data_cmn_pivot %>% 
+ggplot(mapping = aes(x = "Year", 
+                                     y = "DALY", 
+                                     color = "Entity")) +
+  geom_line() +
+  labs(title = "DALY Over Time by Country",
+       x = "Year",
+       y = "DALY",
+       color = "Country") +
+  theme_minimal()
+
 ```
 
 ## Summary of CMNN Burden Findings
