@@ -7,8 +7,8 @@ Jessica Zafra, Massiel Sepulveda
 This document compares the Disability-Adjusted Life Year (DALY) diseases
 burden for three countries: Dominican Republic, Mexico, and Peru. We
 compare the burden due to communicable, maternal, neonatal, and
-nutritional diseases (CMNN), non-communicable diseases (NCDs), and
-overall disease burden for these countries.
+nutritional diseases (CMNN, by M. Sepulveda), non-communicable diseases
+(NCDs, by J. Zafra), and overall disease burden for these countries.
 
 The source data is from the Institute for Health Metrics and Evaluation
 (IHME) Global Burden of Disease (GBD) study.
