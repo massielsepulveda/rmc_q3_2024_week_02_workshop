@@ -5,7 +5,7 @@ Jessica Zafra, Massiel Sepulveda
 # Introduction
 
 This document compares the Disability-Adjusted Life Year (DALY) diseases
-burden for three countries: COUNTRY 1, COUNTRY 2, and COUNTRY 3. We
+burden for three countries: Dominican Republic, Mexico, and Peru. We
 compare the burden due to communicable, maternal, neonatal, and
 nutritional diseases (CMNN), non-communicable diseases (NCDs), and
 overall disease burden for these countries.
