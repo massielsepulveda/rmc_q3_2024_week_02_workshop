@@ -13,12 +13,14 @@ data_ncd <- read_csv(here("data/burden-of-disease-ncd.csv"))
 data_ncd_clean <- data_ncd %>% 
   rename(dalys = `DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% 
   clean_names() %>% 
-  filter(code == "DOM" | code == "PER" | code == "MEX")
+  filter(code == "DOM" | code == "PER" | code == "MEX") #another option is using %in% as in filter(code %in% c("DOM", "PER", "MEX"))
 
 ```
 
 
 ## Table of Estimates for NCD Burden Over Time
+
+The next table shows the DALYs attributed to NCDs for the three countries from 1990 to 2019.
 
 ```{r echo=FALSE}
 # Here render a table for the DALY burden over time for the three countries. 
@@ -36,6 +38,8 @@ ncd_table
 ```
 
 ## Plot Showing Trends in NCD Burden Over Time 
+
+The plot shows the trends in DALYs attributed to NCDs per country.
 
 ```{r, echo=FALSE}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.

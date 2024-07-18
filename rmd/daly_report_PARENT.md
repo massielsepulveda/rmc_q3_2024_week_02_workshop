@@ -75,6 +75,9 @@ Republic.
 
 ## Table of Estimates for NCD Burden Over Time
 
+The next table shows the DALYs attributed to NCDs for the three
+countries from 1990 to 2019.
+
 | year |      DOM |      MEX |      PER |
 |-----:|---------:|---------:|---------:|
 | 1990 | 20255.61 | 22537.01 | 20704.24 |
@@ -109,6 +112,8 @@ Republic.
 | 2019 | 21486.58 | 21022.82 | 15303.04 |
 
 ## Plot Showing Trends in NCD Burden Over Time
+
+The plot shows the trends in DALYs attributed to NCDs per country.
 
 ![](daly_report_PARENT_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
